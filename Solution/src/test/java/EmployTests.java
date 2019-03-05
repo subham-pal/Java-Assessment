@@ -1,6 +1,4 @@
-import com.subham.assessment.models.Employee;
-import com.subham.assessment.models.EmployeeRole;
-import com.subham.assessment.models.EmployeeType;
+import com.subham.assessment.models.*;
 import com.subham.assessment.services.EmployeeCreator;
 import com.subham.assessment.utils.ValidityChecker;
 import jdk.nashorn.internal.objects.annotations.Setter;
@@ -69,5 +67,43 @@ public class EmployTests {
         EmployeeCreator employeeCreator= new EmployeeCreator();
         Employee employee = employeeCreator.createEmployee("Ram", "@gmail.com", "01/03/2018", EmployeeType.PROBATION, EmployeeRole.ADMIN);
         Assert.assertEquals(null, employee);
+    }
+
+    @Test
+    public void leavetest1(){
+        EmployeeCreator employeeCreator= new EmployeeCreator();
+        Employee employee = employeeCreator.createEmployee("Ram", "abc@gmail.com", "01/03/2018", EmployeeType.PROBATION, EmployeeRole.ADMIN);
+        Assert.assertEquals(0, employee.getleave(LeaveType.SICKLEAVE));
+    }
+
+    @Test
+    public void leavetest2(){
+        EmployeeCreator employeeCreator= new EmployeeCreator();
+        Employee employee = employeeCreator.createEmployee("Ram", "abc@gmail.com", "01/03/2018", EmployeeType.PERMANENT, EmployeeRole.ADMIN);
+        Assert.assertEquals(5, employee.getleave(LeaveType.SICKLEAVE));
+
+    }
+
+    @Test
+    public void leavetest3(){
+        EmployeeCreator employeeCreator= new EmployeeCreator();
+        Employee employee = employeeCreator.createEmployee("Ram", "abc@gmail.com", "01/03/2018", EmployeeType.PERMANENT, EmployeeRole.ADMIN);
+        Assert.assertEquals(5, employee.getleave(LeaveType.CASUALLEAVE));
+
+    }
+
+    @Test
+    public void leavetest4(){
+        EmployeeCreator employeeCreator= new EmployeeCreator();
+        Employee employee = employeeCreator.createEmployee("Ram", "abc@gmail.com", "01/03/2018", EmployeeType.PERMANENT, EmployeeRole.ADMIN);
+        Assert.assertEquals(15, employee.getleave(LeaveType.PRIVILEGELEAVE));
+    }
+
+    @Test
+    public void holidayexiststest(){
+        EmployeeCreator employeeCreator= new EmployeeCreator();
+        Employee employee = employeeCreator.createEmployee("Ram", "abc@gmail.com", "01/03/2018", EmployeeType.PERMANENT, EmployeeRole.ADMIN);
+        Holidays holidays = Employee.getHolidays();
+        Assert.assertEquals(true, holidays.isHoliday("26/01/2019"));
     }
 }

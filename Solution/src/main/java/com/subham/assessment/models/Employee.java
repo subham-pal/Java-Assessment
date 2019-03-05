@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.Map;
+
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -15,6 +19,9 @@ public class Employee {
     private String dateOfJoining;
     private EmployeeType employeeType;
     private EmployeeRole employeeRole;
+    private Map<Category, Integer> leaves;
+
+    private static Holidays holidays;
 
     private static int currentIdAvailable;
 
@@ -23,6 +30,18 @@ public class Employee {
     }
     public static int getCurrentIdAvailable(){
         return currentIdAvailable;
+    }
+    public int getleave(LeaveType leaveType){
+        Category category = new Category(employeeType, leaveType);
+        return leaves.get(category);
+    }
+
+    public void viewHolidays(){
+        holidays.view();
+    }
+
+    public static Holidays getHolidays(){
+        return holidays;
     }
 
 }
