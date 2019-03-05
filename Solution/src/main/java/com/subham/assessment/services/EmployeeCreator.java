@@ -23,6 +23,7 @@ public class EmployeeCreator {
         leave.put(new Category(EmployeeType.PERMANENT, LeaveType.SICKLEAVE), 5);
         leave.put(new Category(EmployeeType.PERMANENT, LeaveType.CASUALLEAVE), 5);
         leave.put(new Category(EmployeeType.PERMANENT, LeaveType.PRIVILEGELEAVE), 15);
+        Employee.holidays = new Holidays();
         Employee employee = new Employee(Employee.getCurrentIdAvailable(), name, email, dateOfJoining, employeeType,employeeRole, leave);
         return employee;
     }

@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class Holidays {
     private  ArrayList<HolidayArguement> holidays;
 
-    Holidays(){
+    public Holidays(){
+        holidays = new ArrayList<HolidayArguement>();
         holidays.add(new HolidayArguement("21/03/2019", "Holi"));
         holidays.add(new HolidayArguement("26/01/2019", "Republic Day"));
         holidays.add(new HolidayArguement("15/08/2019", "Independence Day"));

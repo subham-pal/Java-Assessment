@@ -21,7 +21,7 @@ public class Employee {
     private EmployeeRole employeeRole;
     private Map<Category, Integer> leaves;
 
-    private static Holidays holidays;
+    public static Holidays holidays;
 
     private static int currentIdAvailable;
 
